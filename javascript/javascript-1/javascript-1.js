@@ -2,16 +2,16 @@
 const assert = require('assert');
 
 function sum(number) {
-  if (number !== undefined) {
-    return function wrapper(n) {
-      if (n !== undefined) {
-        number += n;
-        return wrapper;
-      }
-      return number;
-    };
+  if (number === undefined) {
+    return 0;
   }
-  return 0;
+  return function wrapper(n) {
+    if (n !== undefined) {
+      number += n;
+      return wrapper;
+    }
+    return number;
+  };
 }
 
 describe('sum', () => {
