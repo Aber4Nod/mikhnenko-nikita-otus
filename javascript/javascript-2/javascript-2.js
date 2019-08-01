@@ -2,14 +2,16 @@
 const assert = require('assert');
 
 function promiseReduce(asyncFunctions, reduce, initialValue) {
-    return Promise.resolve(asyncFunctions.reduce((promise, func) => {
-        return Promise.resolve(promise.then(async currentValue => {
-            await func().then(result => {
-                currentValue = reduce(currentValue, result);
-            }).catch(error => error);
-            return currentValue
-        }));
-    }, Promise.resolve(initialValue)));
+    return asyncFunctions.reduce((promise, func) => {
+        return promise.then(async currentValue => {
+            let result = await func().catch(error => {
+                console.log(error);
+            });
+            return result !== undefined ?
+                reduce(currentValue, result) :
+                currentValue;
+        });
+    }, Promise.resolve(initialValue));
 }
 
 describe('promiseReduce', () => {
