@@ -37,14 +37,14 @@ async function processSequenceRequest(N) {
 }
 
 if (process.argv.length !== 4 || isNaN(process.argv[2])) {
-    console.log("Bad arguments ...\n\nUsage: %s [Request number N] [Request type (parallel|sequence)] ...\n", __filename);
+    console.log("Bad arguments ...\n\nUsage: %s [Request number N] [Request type (parallel|sequent)] ...\n", __filename);
 }
 
 switch (process.argv[3]) {
     case "parallel":
         processParallelRequest(process.argv[2]);
         break;
-    case "sequence":
+    case "sequent":
         processSequenceRequest(process.argv[2]);
         break;
     default:
