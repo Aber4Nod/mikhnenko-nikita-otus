@@ -18,7 +18,7 @@ For running `server`, launch it with node interpreter:
 `node server.js`
 ### Run request script
 For running `request` script just follow the usage hint:
-`Usage: ./request.js [Request number N] [Request type (parallel|sequence)] ..."`
+`Usage: ./request.js [Request number N] [Request type (parallel|sequent)] ..."`
 
 For example, for running 5 parallel requests for your local web server just type in your CLI:
 `./request.js 5 parallel`,

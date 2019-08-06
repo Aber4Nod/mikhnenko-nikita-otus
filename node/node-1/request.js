@@ -28,7 +28,7 @@ function processParallelRequest(N) {
     }
 }
 
-async function processSequenceRequest(N) {
+async function processSequentRequest(N) {
     for (let i = 0; i < N; ++i) {
         await new Promise(resolve => {
             getRequest(resolve);
@@ -45,8 +45,8 @@ switch (process.argv[3]) {
         processParallelRequest(process.argv[2]);
         break;
     case "sequent":
-        processSequenceRequest(process.argv[2]);
+        processSequentRequest(process.argv[2]);
         break;
     default:
-        console.error("Got invalid request type: parallel or sequence supported");
+        console.error("Got invalid request type: parallel or sequent supported");
 }
